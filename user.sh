@@ -7,11 +7,11 @@ cd /app
 unzip /tmp/user.zip
 cd /app
 npm install
-cp home/centos/roboshop-shell/user.service /etc/systemd/system/user.service
+cp /home/centos/roboshop-shell/user.service /etc/systemd/system/user.service
 systemctl daemon-reload
 systemctl enable user
 systemctl restart user
 
-cp home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo
+cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo
 yum install mongodb-org-shell -y
 mongo --host mongodb.gowthamidevops.online </app/schema/user.js
