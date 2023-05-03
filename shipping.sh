@@ -23,7 +23,7 @@ echo -e "/e[36m>>>>Install MYSQL<<</e]0m"
 yum install mysql -y
 
 echo -e "/e[36m>>>>Load schema<<</e]0m"
-mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pRoboShop@1 < /app/schema/shipping.sql
+mysql -h  mysql-dev.gowthamidevops.online -uroot -pRoboShop@1 < /app/schema/shipping.sql
 
 echo -e "\e[36m>>>>copy catalogue service<<<<\e]0m"
 cp /home/centos/roboshop-shell/shipping.service /etc/systemd/system/shipping.service
