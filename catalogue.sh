@@ -37,4 +37,4 @@ echo -e "\e[36m>>>>install mongodb client<<<<\e]0m"
 yum install mongodb-org-shell -y
 
 echo -e "\e[36m>>>>Load schema<<<<\e]0m"
-mongo --host mongodb.gowthamidevops.online </app/schema/catalogue.js
+mongo --host mongodb-dev.gowthamidevops.online </app/schema/catalogue.js
