@@ -1,6 +1,7 @@
 script_path=$(dirname $0)
 source ${script_path}/common.sh
-pwd
+
+
 exit
 
 echo -e "/e[36m>>>>Configure Nodejs repo<<<</e]0m"
