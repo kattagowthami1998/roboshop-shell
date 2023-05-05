@@ -1,8 +1,11 @@
+script_path=$(dirname $0)
+source $(script_path)/common.sh
+
 echo -e "/e[36m>>>>Install Maven<<<</e]0m"
 yum install maven -y
 
 echo -e "/e[36m>>>>Add user<<<</e]0m"
-useradd roboshop
+useradd ${app_user}
 
 echo -e "/e[36m>>>>create app directory<<<</e]0m"
 rm -rf /app
@@ -26,7 +29,7 @@ echo -e "/e[36m>>>>Load schema<<</e]0m"
 mysql -h  mysql-dev.gowthamidevops.online -uroot -pRoboShop@1 < /app/schema/shipping.sql
 
 echo -e "\e[36m>>>>copy catalogue service<<<<\e]0m"
-cp /home/centos/roboshop-shell/shipping.service /etc/systemd/system/shipping.service
+cp ${script_path}/shipping.service /etc/systemd/system/shipping.service
 
 echo -e "/e[36m>>>>start shipping service<<</e]0m"
 systemctl daemon-reload
