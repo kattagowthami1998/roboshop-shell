@@ -1,5 +1,7 @@
 script_path=$(dirname $0)
 source ${script_path}/common.sh
+pwd
+exit
 
 echo -e "/e[36m>>>>Configure Nodejs repo<<<</e]0m"
 
@@ -26,7 +28,7 @@ echo -e "\e[36m>>>>Install Nodejs dependencies<<<<\e]0m"
 npm install
 
 echo -e "\e[36m>>>>copy catalogue service<<<<\e]0m"
-cp ${script_path}/catalogue.service /etc/systemd/system/catalogue.service
+cp $script_path/catalogue.service /etc/systemd/system/catalogue.service
 
 echo -e "\e[36m>>>>start catalogue service<<<<\e]0m"
 systemctl daemon-reload
@@ -34,7 +36,7 @@ systemctl enable catalogue
 systemctl restart catalogue
 
 echo -e "\e[36m>>>>copy mongorepo <<<<\e]0m"
-cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo
+cp $script_path/mongo.repo /etc/yum.repos.d/mongo.repo
 
 echo -e "\e[36m>>>>install mongodb client<<<<\e]0m"
 yum install mongodb-org-shell -y
