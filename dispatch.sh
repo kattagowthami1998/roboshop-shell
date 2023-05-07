@@ -1,5 +1,6 @@
-script_path=$(dirname $0)
-source $(script_path)/common.sh
+script=$(real_path "$0")
+script_path=$(dirname "$script")
+source ${script_path}/common.sh
 
 yum install golang -y
 useradd ${app_user}

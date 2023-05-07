@@ -1,5 +1,6 @@
-script_path=$(dirname $0)
-source $(script_path)/common.sh
+script=$(real_path "$0")
+script_path=$(dirname "$script")
+source ${script_path}/common.sh
 
 echo -e "/e[36m>>>>Install Maven<<<</e]0m"
 yum install maven -y
