@@ -4,7 +4,7 @@ print_head(){
   echo -e "\e[35m>>>>>> $1 <<<<<<\e[0m"
 }
 
-func_schema_setup(){
+func_schema_setup() {
     if [ "$schema_setup" == "mongo" ]; then
     print_head "Copy Mongo repo"
     cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo
@@ -25,6 +25,8 @@ func_schema_setup(){
     print_head "Load schema"
     mysql -h  mysql-dev.gowthamidevops.online -uroot -p${mysql_root_password} < /app/schema/${component}.sql
 
+  fi
+  }
 
 func_app_prereq() {
       print_head "Add application user"
