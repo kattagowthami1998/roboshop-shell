@@ -6,8 +6,8 @@ mysql_root_password=$1
 if [ -z "$my_sql_root_password" ]; then
   echo input MYSQL root password missing
   exit
-  fi
+fi
 
-component=shiping
+component="shipping"
 schema_setup=mysql
 func_java
