@@ -80,9 +80,7 @@ func_java() {
 
   print_head "Download maven dependencies"
   mvn clean package
-  mv target/shipping-1.0.jar shipping.jar
-
-  func_systemd_setup
+  mv target/{component}-1.0.jar {component}.jar
   func_schema_setup
-
-}
+  func_systemd_setup
+ }
