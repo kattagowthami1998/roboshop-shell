@@ -72,7 +72,6 @@ func_nodejs() {
 }
 
 func_java() {
-
   print_head "Install Maven"
   yum install maven -y
 
@@ -81,6 +80,7 @@ func_java() {
   print_head "Download maven dependencies"
   mvn clean package
   mv target/{component}-1.0.jar {component}.jar
+
   func_schema_setup
   func_systemd_setup
  }
