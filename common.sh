@@ -4,7 +4,7 @@ print_head(){
   echo -e "\e[35m>>>>>> $1 <<<<<<\e[0m"
 }
 
-schema_setup(){
+func_schema_setup(){
   if [ "$schema_setup" == "mongo"];then
   print_head "Copy Mongo repo"
   cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo
@@ -50,5 +50,5 @@ func_nodejs() {
   systemctl enable ${component}
   systemctl restart ${component}
 
-  schema_setup
+  func_schema_setup
 }
