@@ -23,7 +23,7 @@ func_schema_setup() {
     yum install mysql -y
 
     print_head "Load schema"
-    mysql -h  mysql-dev.gowthamidevops.online -uroot -p${mysql_root_password} < /app/schema/${component}.sql
+    mysql -h  mysql-dev.gowthamidevops.online -uroot -p${mysql_root_password} < /app/schema/shipping.sql
 
   fi
   }
