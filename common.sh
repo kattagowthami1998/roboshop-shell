@@ -18,7 +18,7 @@ schema_setup(){
   fi
 }
 
-func_noejs() {
+func_nodejs() {
  print_head "Configure Nodejs repo"
  curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
