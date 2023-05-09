@@ -2,7 +2,7 @@ script=$(realpath "$0")
 script_path=$(dirname "$script")
 source ${script_path}/common.sh
 
-func_print_head "Disable MYSQL"
+func_print_head "Disable MySQL 8 Version"
 dnf module disable mysql -y &>>$log_file
 func_stat_check $?
 

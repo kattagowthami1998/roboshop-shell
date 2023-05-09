@@ -72,11 +72,11 @@ func_app_prereq() {
 
 func_systemd_setup() {
 
-  func_print_head "copy catalogue service"
+  func_print_head "copy service"
   cp $script_path/${component}.service /etc/systemd/system/${component}.service &>>$log_file
   func_stat_check $?
 
-   func_print_head "start catalogue service"
+   func_print_head "start  service"
     systemctl daemon-reload &>>$log_file
     systemctl enable ${component} &>>$log_file
     systemctl restart ${component} &>>$log_file
