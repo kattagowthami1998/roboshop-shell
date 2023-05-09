@@ -133,7 +133,7 @@ func_java() {
  func_stat_check $?
 
 func_print_head "Update Passwords in System Service file"
- sed -i -e "-s|rabbit_mq_appuser_password|${rabbit_mq_appuser_password}|" $script_path/${component}.service &>>$log_file
+ sed -i -e "s|rabbit_mq_appuser_password|${rabbit_mq_appuser_password}|" $script_path/${component}.service &>>$log_file
  func_stat_check $?
  func_systemd_setup
 
