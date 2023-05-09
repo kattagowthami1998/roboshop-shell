@@ -1,24 +1,30 @@
-script=$(real_path "$0")
+script=$(realpath "$0")
 script_path=$(dirname "$script")
 source ${script_path}/common.sh
 
-echo -e "/e[36m>>>>Disable MYSQL<<</e]0m"
-dnf module disable mysql -y
+func_print_head "Disable MYSQL"
+dnf module disable mysql -y &>>$log_file
+func_stat_check $?
 
-echo -e "/e[36m>>>>copying mysql.repo<<</e]0m"
-cp ${script_path}/mysql.repo /etc/yum.repos.d/mysql.repo
+func_print_head "copying mysql.repo"
+cp ${script_path}/mysql.repo /etc/yum.repos.d/mysql.repo &>>$log_file
+func_stat_check $?
 
-echo -e "/e[36m>>>>update listen address <<</e]0m"
-sed -i -e 's|127.0.0.1|0.0.0.0|' /etc/redis.conf
-sed -i -e 's|127.0.0.1|0.0.0.0|' /etc/redis/redis.conf
+func_print_head "update listen address"
+sed -i -e 's|127.0.0.1|0.0.0.0|' /etc/redis.conf  &>>$log_file
+sed -i -e 's|127.0.0.1|0.0.0.0|' /etc/redis/redis.conf &>>$log_file
+func_stat_check $?
 
-echo -e "/e[36m>>>>install mysql.repo<<</e]0m"
-yum install mysql-community-server -y
+func_print_head "install mysql.repo"
+yum install mysql-community-server -y &>>$log_file
+func_stat_check $?
 
-echo -e "/e[36m>>>>start mysql<<</e]0m"
-systemctl enable mysqld
-systemctl restart mysqld
+func_print_head "start mysql"
+systemctl enable mysqld &>>$log_file
+systemctl restart mysqld &>>$log_file
+func_stat_check $?
 
-echo -e "/e[36m>>>>set userid & pw<<</e]0m"
-mysql_secure_installation --set-root-pass RoboShop@1
-mysql -uroot -pRoboShop@1
+func_print_head "set userid & pw"
+mysql_secure_installation --set-root-pass $mysql_root_password &>>$log_file
+#mysql -uroot -pRoboShop@1 &>>$log_file
+func_stat_check $?
