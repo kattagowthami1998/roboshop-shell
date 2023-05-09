@@ -113,7 +113,7 @@ func_java() {
 
   func_print_head "Download maven dependencies"
   mvn clean package  &>>$log_file
-  mv target/{component}-1.0.jar {component}.jar  &>>$log_file
+  mv target/${component}-1.0.jar ${component}.jar  &>>$log_file
   func_stat_check $?
 
   func_schema_setup
