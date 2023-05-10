@@ -48,7 +48,7 @@ func_schema_setup() {
   }
 
 func_app_prereq() {
-      func_print_head "Add application user"
+      func_print_head "create application user"
       id ${app_user} &>>$log_file
       if [ $? -ne 0 ]; then
       useradd ${app_user} &>>$log_file
@@ -76,7 +76,7 @@ func_systemd_setup() {
   cp $script_path/${component}.service /etc/systemd/system/${component}.service &>>$log_file
   func_stat_check $?
 
-   func_print_head "start  service"
+   func_print_head "start ${component} service"
     systemctl daemon-reload &>>$log_file
     systemctl enable ${component} &>>$log_file
     systemctl restart ${component} &>>$log_file
@@ -122,7 +122,7 @@ func_java() {
 
  func_python(){
 
- func_print_head "Install Maven"
+ func_print_head "Install python"
  yum install python36 gcc python3-devel -y &>>$log_file
  func_stat_check $?
 
@@ -135,6 +135,7 @@ func_java() {
 func_print_head "Update Passwords in System Service file"
  sed -i -e "s|rabbit_mq_appuser_password|${rabbit_mq_appuser_password}|" $script_path/${component}.service &>>$log_file
  func_stat_check $?
+
  func_systemd_setup
 
 }
